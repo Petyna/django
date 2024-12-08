@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <!-- Основний контейнер посту -->
+        <div class="card shadow-lg">
+            <div class="card-header text-center bg-primary text-white">
+                <h2 class="card-title">{{ post.title }}</h2>
+            </div>
+            <div class="card-body">
+                <!-- Тіло посту -->
+                <p class="lead">{{ post.body }}</p>
+                <hr>
+                <!-- Інформація про публікацію -->
+                <p class="text-muted text-end">
+                    <small>Опубліковано: {{ post.date|date:"d F Y H:i" }}</small>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
