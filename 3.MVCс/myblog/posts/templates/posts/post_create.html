@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Створення новини
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Створення новини</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" action="/posts/create" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Заголовок</label>
+                        <input type="text" class="form-control" name="title" id="title" 
+                               maxlength="255" required>
+                        <div class="invalid-feedback">
+                            Заголовок обов'язковий і не може перевищувати 255 символів.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="body" class="form-label">Текст новини</label>
+                        <textarea class="form-control" name="body" id="body" rows="5" required></textarea>
+                        <div class="invalid-feedback">
+                            Текст новини обов'язковий.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="banner" class="form-label">Зображення</label>
+                        <input type="file" class="form-control" name="banner" id="banner" accept="image/*" required>
+                        <div class="invalid-feedback">
+                            Зображення обов'язкове.
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Створити</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/form_validation.js' %}"></script>
+{% endblock %}

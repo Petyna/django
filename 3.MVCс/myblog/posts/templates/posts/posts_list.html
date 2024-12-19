@@ -6,7 +6,9 @@
 
 {% block content %}
     <h1 class="text-center">Новини</h1>
+    
     <div class="container">
+        <a class="btn btn-lg btn-primary" href="{% url 'posts:create' %}" role="button">Створити</a>
         {% for post in posts %}
         <div class="bg-body-tertiary p-5 mb-3 rounded">
           <h1>{{post.title}}</h1>
